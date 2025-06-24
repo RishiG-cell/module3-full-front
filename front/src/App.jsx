@@ -5,10 +5,13 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProfilePage from "./pages/ProfilePage";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
+      <Navbar />
       <h1>MuzBook</h1>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -17,6 +20,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {/* <Footer /> */}
     </>
   );
 }

@@ -1,7 +1,11 @@
-import React from "react";
+import Loginform from "../components/Loginform";
 
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return (
+    <>
+      <Loginform />
+    </>
+  );
 };
 
 export default LoginPage;
