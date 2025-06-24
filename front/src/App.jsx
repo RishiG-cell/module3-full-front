@@ -7,6 +7,7 @@ import ProfilePage from "./pages/ProfilePage";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ProtectedRouter from "./components/ProtectedRouter";
 
 function App() {
   return (
@@ -17,7 +18,14 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/auth/signup" element={<SignUpPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRouter>
+              <ProfilePage />
+            </ProtectedRouter>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}

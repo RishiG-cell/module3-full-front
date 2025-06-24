@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signupform = () => {
-  const [username, SetUsername] = useState(" ");
-  const [email, SetEmail] = useState(" ");
+  const [username, SetUsername] = useState("");
+  const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
-  const [country, SetCountry] = useState(" ");
-  const [image, SetImage] = useState(" ");
+  const [country, SetCountry] = useState("");
+  const [image, SetImage] = useState("");
   const nav = useNavigate();
 
   function handleSignup(e) {
