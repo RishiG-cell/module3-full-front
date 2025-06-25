@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <Link to="/">
+        <Link to="/profile">
           <h1>LOGO</h1>
         </Link>
         {currentUser && <button onClick={handleLogout}>Loggout</button>}

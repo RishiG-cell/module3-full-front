@@ -8,12 +8,15 @@ import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRouter from "./components/ProtectedRouter";
+import FeedPage from "./pages/FeedPage";
+import UpdateUserPage from "./pages/UpdateUserPage";
+import CreatePostPage from "./pages/CreatePostPage";
 
 function App() {
   return (
     <>
       <Navbar />
-      <h1>MuzBook</h1>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth/login" element={<LoginPage />} />
@@ -26,9 +29,33 @@ function App() {
             </ProtectedRouter>
           }
         />
+        <Route
+          path="/feed"
+          element={
+            <ProtectedRouter>
+              <FeedPage />
+            </ProtectedRouter>
+          }
+        />
+        <Route
+          path="/update"
+          element={
+            <ProtectedRouter>
+              <UpdateUserPage />
+            </ProtectedRouter>
+          }
+        />
+        <Route
+          path="/post"
+          element={
+            <ProtectedRouter>
+              <CreatePostPage />
+            </ProtectedRouter>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

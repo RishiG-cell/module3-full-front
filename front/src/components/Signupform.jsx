@@ -60,14 +60,7 @@ const Signupform = () => {
             onChange={(e) => SetCountry(e.target.value)}
           />
         </label>
-        <label>
-          Profile Image:
-          <input
-            type="text"
-            value={image}
-            onChange={(e) => SetImage(e.target.value)}
-          />
-        </label>
+
         <button>Signup</button>
       </form>
     </div>

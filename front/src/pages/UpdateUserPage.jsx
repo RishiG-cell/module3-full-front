@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 import Sidebar from "../components/Sidebar";
 
-const ProfilePage = () => {
+const UpdateUserPage = () => {
   const { currentUser, isLoading, loggedIn } = useContext(AuthContext);
   const [profileUser, setProfileUser] = useState(null);
   useEffect(() => {
     axios
       .get(`http://localhost:5005/profile/user/${currentUser._id}`)
       .then((res) => {
-        console.log("hello", res.data);
         setProfileUser(res.data);
       })
       .catch((err) => console.log(err));
@@ -19,20 +18,13 @@ const ProfilePage = () => {
   if (!profileUser) {
     return <p>Loading..</p>;
   }
+
   return (
     <div className="profilepage">
-      <div>
-        <Sidebar />
-      </div>
-      <div className="info-page">
-        <h1>{profileUser.username}'s ProfilePage</h1>
-        <img src={null} alt={profileUser.username} />
-        <p>{profileUser.country}</p>
-        <div className="profile-post">{profileUser.posts}</div>
-        <Link to="/post">Post</Link>
-      </div>
+      <Sidebar />
+      <div>Loading</div>
     </div>
   );
 };
 
-export default ProfilePage;
+export default UpdateUserPage;
