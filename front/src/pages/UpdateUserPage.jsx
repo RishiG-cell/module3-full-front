@@ -5,13 +5,22 @@ import axios from "axios";
 import Sidebar from "../components/Sidebar";
 
 const UpdateUserPage = () => {
-  const { currentUser, isLoading, loggedIn } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   const [profileUser, setProfileUser] = useState(null);
+  const [username, SetUsername] = useState("");
+  const [email, SetEmail] = useState("");
+  const [password, SetPassword] = useState("");
+  const [country, SetCountry] = useState("");
+  const [image, SetImage] = useState("");
+
   useEffect(() => {
     axios
       .get(`http://localhost:5005/profile/user/${currentUser._id}`)
       .then((res) => {
         setProfileUser(res.data);
+        SetUsername(res.data.username);
+        SetEmail(res.data.email);
+        SetCountry(res.data.country);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -19,10 +28,74 @@ const UpdateUserPage = () => {
     return <p>Loading..</p>;
   }
 
+  function handleUpdate(e) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("country", country);
+    formData.append("imageUrl", image);
+
+    axios
+      .put(`http://localhost:5005/profile/user/${currentUser._id}`, formData)
+      .then((res) => {
+        alert("Profile updated");
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Failed");
+      });
+  }
+  console.log(profileUser.username);
+
   return (
     <div className="profilepage">
       <Sidebar />
-      <div>Loading</div>
+      <div>
+        <h1>Signup</h1>
+        <form className="signupform" onSubmit={handleUpdate}>
+          <label>
+            Username:
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => SetUsername(e.target.value)}
+            />
+          </label>
+          <label>
+            Email:
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => SetEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => SetPassword(e.target.value)}
+            />
+          </label>
+          <label>
+            Country:
+            <input
+              type="text"
+              value={country}
+              onChange={(e) => SetCountry(e.target.value)}
+            />
+          </label>
+          <label>
+            Profile Image:
+            <input type="file" name="image" />
+          </label>
+
+          <button>Update</button>
+        </form>
+      </div>
     </div>
   );
 };

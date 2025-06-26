@@ -7,12 +7,18 @@ import Sidebar from "../components/Sidebar";
 const ProfilePage = () => {
   const { currentUser, isLoading, loggedIn } = useContext(AuthContext);
   const [profileUser, setProfileUser] = useState(null);
+  const [userPost, setUserPost] = useState([]);
+
   useEffect(() => {
     axios
       .get(`http://localhost:5005/profile/user/${currentUser._id}`)
       .then((res) => {
         console.log("hello", res.data);
         setProfileUser(res.data);
+        return axios.get(`http://localhost:5005/post/feed/${currentUser._id}`);
+      })
+      .then((res) => {
+        setUserPost(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -26,10 +32,20 @@ const ProfilePage = () => {
       </div>
       <div className="info-page">
         <h1>{profileUser.username}'s ProfilePage</h1>
-        <img src={null} alt={profileUser.username} />
+        <img src={profileUser.image} alt={profileUser.username} />
         <p>{profileUser.country}</p>
-        <div className="profile-post">{profileUser.posts}</div>
+        <div className="profile-post">
+          {userPost.map((onePost) => {
+            return (
+              <div className="profile-post-card" key={onePost._id}>
+                <div>{onePost.post}</div>
+                <img src={onePost.image} />
+              </div>
+            );
+          })}
+        </div>
         <Link to="/post">Post</Link>
+        <Link to="/update">Update profile</Link>
       </div>
     </div>
   );

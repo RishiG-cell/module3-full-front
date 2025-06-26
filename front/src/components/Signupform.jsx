@@ -7,14 +7,22 @@ const Signupform = () => {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const [country, SetCountry] = useState("");
-  const [image, SetImage] = useState("");
+
   const nav = useNavigate();
 
   function handleSignup(e) {
     e.preventDefault();
-    const newUser = { username, email, password, country, image };
+
+    const image = e.target.image.files[0];
+    const formData = new FormData();
+    formData.append("imageUrl", image);
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("country", country);
+    formData.append("password", password);
+
     axios
-      .post("http://localhost:5005/auth/signup", newUser)
+      .post("http://localhost:5005/auth/signup", formData)
       .then((res) => {
         console.log("succesful", res.data);
         nav("/auth/login");
@@ -59,6 +67,10 @@ const Signupform = () => {
             value={country}
             onChange={(e) => SetCountry(e.target.value)}
           />
+        </label>
+        <label>
+          Profile Image:
+          <input type="file" name="image" />
         </label>
 
         <button>Signup</button>
