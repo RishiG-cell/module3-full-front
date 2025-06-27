@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useState } from "react";
+import NewPost from "../components/NewPost";
 
 const CreatePostPage = () => {
-  const { currentUser } = useContext(AuthContext);
-  return <div>CreatePostPage</div>;
+  const [posts, setPosts] = useState([]);
+  return (
+    <div>
+      <NewPost posts={posts} setPosts={setPosts} />
+    </div>
+  );
 };
 
 export default CreatePostPage;

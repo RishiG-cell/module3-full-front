@@ -13,7 +13,6 @@ const ProfilePage = () => {
     axios
       .get(`http://localhost:5005/profile/user/${currentUser._id}`)
       .then((res) => {
-        console.log("hello", res.data);
         setProfileUser(res.data);
         return axios.get(`http://localhost:5005/post/feed/${currentUser._id}`);
       })
@@ -38,8 +37,10 @@ const ProfilePage = () => {
           {userPost.map((onePost) => {
             return (
               <div className="profile-post-card" key={onePost._id}>
-                <div>{onePost.post}</div>
                 <img src={onePost.image} />
+                <div>
+                  <h3>{onePost.post}</h3>
+                </div>
               </div>
             );
           })}

@@ -18,7 +18,7 @@ const AuthContextWrapper = ({ children }) => {
           authorization: `Bearer ${tokenInStorage}`,
         },
       });
-      console.log(response.data);
+
       setCurrentUser(response.data.payload);
       setIsLoading(false);
       SetLoggedIn(true);

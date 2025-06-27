@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 
 import Sidebar from "../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 const UpdateUserPage = () => {
   const { currentUser } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const UpdateUserPage = () => {
   const [password, SetPassword] = useState("");
   const [country, SetCountry] = useState("");
   const [image, SetImage] = useState("");
+  const nav = useNavigate();
 
   useEffect(() => {
     axios
@@ -37,18 +39,14 @@ const UpdateUserPage = () => {
     formData.append("password", password);
     formData.append("country", country);
     formData.append("imageUrl", image);
-
     axios
-      .put(`http://localhost:5005/profile/user/${currentUser._id}`, formData)
+      .put(`http://localhost:5005/profile/update/${currentUser._id}`, formData)
       .then((res) => {
-        alert("Profile updated");
+        console.log(res);
+        nav("/profile");
       })
-      .catch((err) => {
-        console.error(err);
-        alert("Failed");
-      });
+      .catch((err) => console.log(err));
   }
-  console.log(profileUser.username);
 
   return (
     <div className="profilepage">

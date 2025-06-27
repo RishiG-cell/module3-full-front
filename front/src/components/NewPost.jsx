@@ -1,10 +1,12 @@
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewPost = ({ posts, setPosts }) => {
   const { currentUser } = useContext(AuthContext);
   const [post, setPost] = useState("");
+  const nav = useNavigate();
 
   async function handlePost(e) {
     e.preventDefault();
@@ -22,6 +24,7 @@ const NewPost = ({ posts, setPosts }) => {
       );
       setPosts([postUser.data, ...posts]);
       setPost("");
+      nav("/feed");
     } catch (error) {
       console.log(error);
     }
