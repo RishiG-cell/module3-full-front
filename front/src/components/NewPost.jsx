@@ -31,7 +31,7 @@ const NewPost = ({ posts, setPosts }) => {
   }
 
   return (
-    <div>
+    <div className="page-post">
       <h1>Whats on your mind today ?</h1>
       <form onSubmit={handlePost}>
         <textarea

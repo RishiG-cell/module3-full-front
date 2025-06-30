@@ -11,6 +11,7 @@ import ProtectedRouter from "./components/ProtectedRouter";
 import FeedPage from "./pages/FeedPage";
 import UpdateUserPage from "./pages/UpdateUserPage";
 import CreatePostPage from "./pages/CreatePostPage";
+import CommentPage from "./pages/CommentPage";
 
 function App() {
   return (
@@ -50,6 +51,15 @@ function App() {
           element={
             <ProtectedRouter>
               <CreatePostPage />
+            </ProtectedRouter>
+          }
+        />
+
+        <Route
+          path="/comment/:postId"
+          element={
+            <ProtectedRouter>
+              <CommentPage />
             </ProtectedRouter>
           }
         />

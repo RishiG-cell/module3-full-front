@@ -37,7 +37,9 @@ const ProfilePage = () => {
           {userPost.map((onePost) => {
             return (
               <div className="profile-post-card" key={onePost._id}>
-                <img src={onePost.image} />
+                <Link to={`/comment/${onePost._id}`}>
+                  <img src={onePost.image} />
+                </Link>
                 <div>
                   <h3>{onePost.post}</h3>
                 </div>
@@ -45,6 +47,7 @@ const ProfilePage = () => {
             );
           })}
         </div>
+
         <Link to="/post">Post</Link>
         <Link to="/update">Update profile</Link>
       </div>

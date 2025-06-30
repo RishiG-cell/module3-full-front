@@ -2,7 +2,15 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgb(228, 251, 247);
 }
+
+a {
+  font-size: 25px;
+  text-decoration: none;
+  font-weight: 800;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -10,11 +18,12 @@ nav {
   box-shadow: 2px 2px 2px 2px rgb(196, 196, 196);
   border-radius: 20px;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 5px;
+  background-color: rgba(0, 208, 255, 0.275);
 }
 
 nav img {
-  width: 15%;
+  width: 20%;
 }
 
 .home {
@@ -111,6 +120,7 @@ nav img {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 50vw;
 }
 .feed-card {
   display: flex;
@@ -120,23 +130,66 @@ nav img {
   margin: 10px;
   box-shadow: 5px 5px 5px 5px rgb(196, 196, 196);
   border-radius: 20px;
-  width: 50vw;
-  height: 50vh;
+}
+.feed-card h3 {
+  font-weight: 900;
+  font-style: italic;
+  font-size: xx-large;
+}
+
+.feedbutton {
+  margin: 20px;
+}
+
+.feedbutton:hover {
+  color: red;
 }
 
 .feed-card img {
-  width: 20%;
+  width: 40%;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.628);
+  border-radius: 20px;
 }
 
 .feed-post {
   align-self: flex-start;
+  padding: 50px;
+  margin: 10px;
+  background-color: rgba(0, 208, 255, 0.275);
+  box-shadow: 10px 10px 10px rgb(203, 203, 203);
+  height: 100vh;
+}
+
+.feed-post button {
+  margin: 20px;
+  width: 4rem;
+  border-radius: 10px;
+  background-color: rgb(0, 149, 255);
+  color: aliceblue;
+}
+
+.page-post {
+  text-align: center;
   padding: 50px;
   margin: 20px;
   background-color: rgba(0, 208, 255, 0.275);
   box-shadow: 10px 10px 10px rgb(203, 203, 203);
 }
 
-.feed-post button {
+.page-post form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.page-post label,
+input {
+  margin: 20px;
+}
+
+.page-post button {
   margin: 20px;
   width: 4rem;
   border-radius: 10px;
@@ -189,4 +242,41 @@ nav img {
 
   box-shadow: 5px 5px 5px 5px rgb(196, 196, 196);
   border-radius: 20px;
+}
+
+.bubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+  box-shadow: 5px 5px 5px 5px rgb(196, 196, 196);
+  margin: 20px 500px;
+  border-radius: 20px;
+}
+
+.bubble2 {
+  margin: 30px;
+
+  background-color: rgba(211, 211, 211, 0.536);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 5px 5px rgb(196, 196, 196);
+}
+
+.bubble2 input {
+  font-size: 20px;
+  width: 800px;
+  height: 50px;
+  box-shadow: 5px 5px 5px 5px rgb(196, 196, 196);
+  border: rgb(0, 68, 128) solid 2px;
+}
+
+button {
+  border-radius: 15px;
+  width: 5vw;
+  padding: 10px;
+  background-color: rgba(0, 0, 255, 0.682);
+  font-weight: 800;
+  color: white;
 }
